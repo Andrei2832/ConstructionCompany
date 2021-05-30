@@ -84,7 +84,7 @@
                     Click="AddBut_Click"/>
             <Button x:Name="ExitAkkBut" 
                     Style="{StaticResource jB}"
-                    Background="Red"
+                    Background="LightGray"
                     Content="выйти"
                     Width="60"
                     Margin="10,30,0,0"
