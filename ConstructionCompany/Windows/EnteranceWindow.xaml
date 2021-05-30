@@ -1,0 +1,141 @@
+﻿<Window x:Class="ConstructionCompany.EnteranceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConstructionCompany"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="MainWindow" 
+        Height="500" 
+        Width="600" 
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" 
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border Height="auto"
+            Width="auto"
+            CornerRadius="20"
+            >
+        <Border.Background>
+            <ImageBrush ImageSource="/ConstructionCompany;component/Images/EntranceImg.jpg"/>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="Gray"
+                       Opacity="0.9"
+                       RadiusX="10"
+                       RadiusY="10"
+                       Stroke="Transparent"
+                       Margin="170,60,170,60"/>
+            <TextBlock Text="ВХОД В СИСТЕМУ"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="30"
+                       Foreground="White"/>
+            <Rectangle Grid.Row="1" 
+                       Grid.RowSpan="5"
+                       Fill="WhiteSmoke"
+                       RadiusX="10"
+                       RadiusY="10"
+                       Stroke="Transparent"/>
+
+            <TextBlock Text="Логин: "
+                       Foreground="DarkSlateGray"
+                       Grid.Row="1"
+                       Margin="0,10,430,10"
+                       FontSize="20"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"/>
+            <TextBox x:Name="LoginBox"
+                     Style="{StaticResource jT}"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     Foreground="Gray"
+                     Grid.Row="1"
+                     Margin="170,15,100,15"
+                     FontSize="18"
+                     MaxLength="30"
+                     Text="Введите логин"
+                     GotFocus="LoginBox_GotFocus"
+                     LostFocus="LoginBox_LostFocus"/>
+            <Line Stroke="Black"
+                  
+                  Grid.Row="1"
+                  X1="500"
+                  Y1="50"
+                  X2="170"
+                  Y2="50"/>
+
+            <TextBlock Text="Пароль: "
+                       Foreground="DarkSlateGray"
+                       Grid.Row="2"
+                       Margin="0,10,430,10"
+                       FontSize="20"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"/>
+            <TextBox x:Name="PasswodBox"
+                     Style="{StaticResource jT}"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     Foreground="Gray"
+                     Grid.Row="2"
+                     Margin="170,15,100,15"
+                     FontSize="18"
+                     MaxLength="30"
+                     Text="Введите пароль"
+                     GotFocus="PasswodBox_GotFocus"
+                     LostFocus="PasswodBox_LostFocus"/>
+            <Line Stroke="Black"
+                  Grid.Row="2"
+                  X1="500"
+                  Y1="50"
+                  X2="170"
+                  Y2="50"/>
+            <CheckBox x:Name="Check"
+                      Grid.Row="3"
+                      Margin="170,6,410,25"/>
+            <TextBlock Text="Запомни меня"
+                       Grid.Row="3"
+                       Margin="190,5,320,20"
+                    Foreground="DarkSlateGray"/>
+            <Button x:Name="Pass"
+                    Style="{StaticResource jB}"
+                    Background="Transparent"
+                    Grid.Row="3"
+                    Margin="400,5,90,20">
+                <TextBlock 
+                    Text="Забыли пароль?"
+                    Foreground="DarkSlateGray"
+                    TextDecorations="Underline"/>
+            </Button>
+
+            <Button x:Name="Avtores"
+                    Style="{StaticResource MenujB}"
+                    Background="#3dc147"
+                    Foreground="White"
+                    Grid.Row="4"
+                    FontSize="15"
+                    Margin="170,15,290,35"
+                    Content="Авторизация"
+                    Click="Avtores_Click"/>
+            <Button x:Name="Exit"
+                    Style="{StaticResource jB}"
+                    Background="Transparent"
+                    Foreground="DarkSlateGray"
+                    Grid.Row="4"
+                    FontSize="15"
+                    Margin="450,60,90,5"
+                    Content="Выход"
+                    Click="Exit_Click"/>
+        </Grid>
+    </Border>
+</Window>

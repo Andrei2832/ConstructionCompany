@@ -1,0 +1,191 @@
+﻿<Page x:Class="ConstructionCompany.Pages.WorkerPages.AddWorkerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ConstructionCompany.Pages.WorkerPages"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="700" 
+      d:DesignWidth="1260"
+      Title="AddWorkerPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Text="Фамилия:"
+                   FontSize="26"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,380,0"/>
+        <TextBox x:Name="SurnameBox"
+                 FontSize="26"
+                 Margin="200,40,60,40"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 BorderBrush="LightSlateGray"/>
+        
+        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
+                   Text="Имя:"
+                   FontSize="26"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,380,0"/>
+        <TextBox x:Name="NameBox"
+                 FontSize="26"
+                 Margin="200,40,60,40"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 BorderBrush="LightSlateGray"/>
+
+        <TextBlock Grid.Row="3"
+                   Grid.Column="1"
+                   Text="Отчество:"
+                   FontSize="26"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,380,0"/>
+        <TextBox x:Name="PatronymicBox"
+                 FontSize="26"
+                 Margin="200,40,60,40"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 BorderBrush="LightSlateGray"/>
+        
+        <TextBlock Grid.Row="4"
+                   Grid.Column="1"
+                   Text="Дата Рождения:"
+                   FontSize="26"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,380,0"/>
+        <DatePicker x:Name="DateBirthBox"
+                    FontSize="18"
+                    Margin="200,40,130,40"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    BorderBrush="LightSlateGray"/>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="2"
+                   Text="Телефон:"
+                   FontSize="26"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,360,0"/>
+        <TextBox x:Name="TelephonBox"
+                 FontSize="26"
+                 Margin="220,40,60,40"
+                 Grid.Row="1"
+                 Grid.Column="2"
+                 BorderBrush="LightSlateGray"/>
+
+        <TextBlock x:Name="SpesBlock"
+                   Grid.Row="2"
+                   Grid.Column="2"
+                   Text="Специальности:"
+                   FontSize="26"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,360,0"/>
+        <ComboBox x:Name="SpesBox"
+                 FontSize="26"
+                 Margin="220,40,60,40"
+                 Grid.Row="2"
+                 Grid.Column="2"
+                 BorderBrush="LightSlateGray"/>
+
+        <Border x:Name="ListServisBorder"
+                Grid.Column="2"
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                BorderThickness="1"
+                Margin="5,5,50,5">
+        </Border>
+
+        <ListView x:Name="ListSpecialty"
+                  Grid.Row="2"
+                  Grid.Column="2"
+                  Grid.RowSpan="2"
+                  Margin="10,10,100,10"
+                  Visibility="Hidden">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Специальность"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button x:Name="AddSpecialty"
+                Style="{StaticResource jB}"
+                Background="#3dc147"
+                Grid.Row="2"
+                Grid.Column="2"
+                Margin="480,40,60,40"
+                Content="+"
+                FontSize="20"
+                Visibility="Hidden"
+                Click="AddSpecialty_Click"
+                />
+        <Button x:Name="DeleteSpecialty"
+                Style="{StaticResource jB}"
+                Background="Red"
+                Grid.Row="3"
+                Grid.Column="2"
+                Margin="480,40,60,40"
+                Content="-"
+                FontSize="20"
+                Visibility="Hidden"
+                Click="DeleteSpecialty_Click"
+                />
+        <Button x:Name="AddSpecialtyList"
+                Style="{StaticResource jB}"
+                Background="#3dc147"
+                Grid.Row="3"
+                Grid.Column="2"
+                Margin="20,40,300,40"
+                Content="Добавить"
+                FontSize="28"
+                Click="AddSpecialtyList_Click"
+                />
+        <Button x:Name="CancelSpecialty"
+                Style="{StaticResource jB}"
+                Background="Red"
+                Grid.Row="3"
+                Grid.Column="2"
+                Margin="370,40,60,40"
+                Content="Отмена"
+                FontSize="25"
+                Click="CancelSpecialty_Click"
+                />
+
+        <Button x:Name="WorkerFinish"
+                Style="{StaticResource jB}"
+                Background="#3dc147"
+                Grid.Row="5"
+                Grid.Column="2"
+                Margin="230,60,20,20"
+                Content="Добавить Рабочего"
+                FontSize="28"
+                Click="WorkerFinish_Click"
+                />
+    </Grid>
+</Page>

@@ -1,0 +1,51 @@
+﻿<Page x:Class="ConstructionCompany.Pages.WorkerPages.WorkerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ConstructionCompany.Pages.OrderPages"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="700" 
+      d:DesignWidth="1260"
+      Title="Worker">
+
+    <Grid>
+        <ListView x:Name="View"
+                  Background="Transparent"
+                  Foreground="Black"
+                  FontSize="20"
+                  >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Фамилия"
+                                    Width="auto"
+                                    DisplayMemberBinding="{Binding Surname}"/>
+                    <GridViewColumn Header="Имя"
+                                    Width="auto"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Отчество"
+                                    Width="auto"
+                                    DisplayMemberBinding="{Binding Patronymic}"/>
+                    <GridViewColumn Header="Дата Рождения"
+                                    Width="auto"
+                                    DisplayMemberBinding="{Binding DateBirth, StringFormat='dd.MM.yyyy'}"/>
+                    <GridViewColumn Header="Телефон"
+                                    Width="auto"
+                                    DisplayMemberBinding="{Binding Telephone}"/>
+                    <GridViewColumn Header="Специальность"
+                                    Width="auto"
+                                    DisplayMemberBinding="{Binding Expr1}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="Delete"
+                Style="{StaticResource jB}"
+                Background="Red"
+                BorderBrush="Transparent"
+                Content="Удалить"
+                FontSize="24"
+                Margin="1100,580,5,5"
+                Click="Delete_Click"/>
+    </Grid>
+</Page>

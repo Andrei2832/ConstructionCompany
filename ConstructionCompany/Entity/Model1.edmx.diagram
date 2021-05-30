@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1fc23acc08194a8697bb0ef829bb7ef5" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="constructionCompanyModel.Brigade" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.Entrance" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.Object" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.objectType" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.Order" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.Service" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.ServiceOrder" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.specialtiesWorkers" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.Specialty" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.UseMaterial" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.Worker" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.WorkersBrigade" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.BrigadeView" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.ObjectView" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.OrderView" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="constructionCompanyModel.WorkerView" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="constructionCompanyModel.FK__Brigade__idBriga__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK__Shedule__idBriga__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK__WorkersBr__idBri__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK__Object__idObject__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK__Shedule__idObjec__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK_ServiceOrder_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK_UseMaterial_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK_ServiceOrder_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK__specialti__idSpe__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK__specialti__idWor__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="constructionCompanyModel.FK__WorkersBr__idWor__2E1BDC42" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="constructionCompanyModel.Material" Width="1.5" PointX="10.375" PointY="11.875" />
+        <AssociationConnector Association="constructionCompanyModel.FK_UseMaterial_Material" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

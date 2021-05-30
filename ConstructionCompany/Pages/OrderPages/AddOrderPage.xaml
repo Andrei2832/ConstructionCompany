@@ -1,0 +1,423 @@
+﻿<Page x:Class="ConstructionCompany.Pages.OrderPages.AddOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ConstructionCompany.Pages.OrderPages"
+      mc:Ignorable="d"
+      Loaded="Page_Loaded"
+      d:DesignHeight="700" 
+      d:DesignWidth="1260"
+      Title="AddOrderPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.11*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Text="Объект:"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,420,0"/>
+        <TextBox x:Name="ObjectBox"
+                 FontSize="18"
+                 Margin="170,20,100,20"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 BorderBrush="LightSlateGray"/>
+
+        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
+                   Text="Адрес:"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,420,0"/>
+        
+        <TextBox x:Name="AdressBox"
+                 FontSize="18"
+                 Margin="170,20,100,20"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 BorderBrush="LightSlateGray"/>
+
+        <TextBlock Grid.Row="3"
+                   Grid.Column="1"
+                   Text="Тип объекта:"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,420,0"/>
+        
+        <Border x:Name="TypeObjectBorder"  
+                Margin="170,20,100,20"
+                Grid.Row="3"
+                Grid.Column="1"
+                BorderThickness="1"
+                BorderBrush="LightSlateGray">
+            <ComboBox x:Name="TypeObjectBox"
+                      FontSize="18"
+                      />
+        </Border>
+
+        <TextBlock Grid.Row="4"
+                   Grid.Column="1"
+                   Text="Бригада:"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,420,0"/>
+
+        <Border x:Name="BrigadeBorder"
+                Margin="170,20,100,20"
+                Grid.Row="4"
+                Grid.Column="1"
+                BorderThickness="1"
+                BorderBrush="LightSlateGray">
+            <ComboBox x:Name="BrigadeBox"
+                      FontSize="18"/>
+        </Border>
+
+        <Border x:Name="ListServisBorder"
+                Grid.Column="1"
+                Grid.Row="6"
+                Grid.RowSpan="4"
+                BorderThickness="1"
+                Margin="5,5,50,5">
+            
+        </Border>
+        <TextBlock Grid.Row="5"
+                   Grid.Column="1"
+                   Text="Услуги:"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+        <ListView x:Name="ListService"
+                  Grid.Row="6"
+                  Grid.Column="1"
+                  Grid.RowSpan="4"
+                  Margin="10,10,100,10"
+                  Visibility="Hidden">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Наименование"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Цена(руб.) за ед.изм."
+                                    DisplayMemberBinding="{Binding Cost}"/>
+                    <GridViewColumn Header="Еденица измерения"
+                                    DisplayMemberBinding="{Binding Unit}"/>
+                    <GridViewColumn Header="Количество"
+                                    DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="Сумма(руб.)"
+                                    DisplayMemberBinding="{Binding Sum}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="AddService"
+                Style="{StaticResource jB}"
+                Background="#3dc147"
+                Grid.Row="6"
+                Grid.Column="1"
+                Margin="480,20,60,20"
+                Content="+"
+                FontSize="20"
+                Click="AddService_Click"
+                Visibility="Hidden"
+                />
+        <Button x:Name="DeleteService"
+                Style="{StaticResource jB}"
+                Background="Red"
+                Grid.Row="7"
+                Grid.Column="1"
+                Margin="480,20,60,20"
+                Content="-"
+                FontSize="20"
+                Click="DeleteService_Click"
+                Visibility="Hidden"
+                />
+
+        <ComboBox x:Name="NameBox"
+                 Grid.Row="6"
+                 Grid.Column="1"
+                 FontSize="18"
+                 Margin="20,15,100,20"
+                 SelectionChanged="NameBox_SelectionChanged"/>
+        <TextBlock x:Name="CostText"
+                   Text="Цена(руб.) за ед.изм.:"
+                   FontSize="18"
+                   Grid.Row="7"
+                   Grid.Column="1"
+                   Margin="20,0,360,40"/>
+        <TextBlock x:Name="CostBlock"
+                   FontSize="18"
+                   Grid.Row="7"
+                   Grid.Column="1"
+                   Margin="20,20,400,20"/>
+        
+        <TextBlock x:Name="UnitText"
+                   Text="Еденица измерения:"
+                   FontSize="18"
+                   Grid.Row="7"
+                   Grid.Column="1"
+                   Margin="300,0,100,40"/>
+        <TextBlock x:Name="UnitBlock"
+                   FontSize="18"
+                   Grid.Row="7"
+                   Grid.Column="1"
+                   Margin="300,20,100,20"/>
+
+        <TextBlock x:Name="QuantityText"
+                   Text="Количество:"
+                   FontSize="18"
+                   Grid.Row="8"
+                   Grid.Column="1"
+                   Margin="20,0,400,40"/>
+        <TextBox x:Name="QuantityBox"
+                 Text="1"
+                 FontSize="18"
+                 Grid.Row="8"
+                 Grid.Column="1"
+                 Margin="20,25,400,20"
+                 TextChanged="QuantityBox_TextChanged"
+                 PreviewTextInput="QuantityBox_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"
+                 BorderBrush="Red"
+                 BorderThickness="0"
+                 MaxLength="5"/>
+
+        <TextBlock x:Name="SumCostText"
+                   Text="Сумма(руб.):"
+                   FontSize="18"
+                   Grid.Row="8"
+                   Grid.Column="1"
+                   Margin="300,0,100,40"/>
+        <TextBlock x:Name="SumCost"
+                   FontSize="18"
+                   Grid.Row="8"
+                   Grid.Column="1"
+                   Margin="300,20,100,20"/>
+
+        <Button x:Name="AddServiceList"
+                Style="{StaticResource jB}"
+                Background="#3dc147"
+                Grid.Row="9"
+                Grid.Column="1"
+                Margin="20,20,300,10"
+                Content="Добавить"
+                FontSize="28"
+                Click="AddServiceList_Click"
+                />
+        <Button x:Name="Cancel"
+                Style="{StaticResource jB}"
+                Background="Red"
+                Grid.Row="9"
+                Grid.Column="1"
+                Margin="350,20,100,10"
+                Content="Отмена"
+                FontSize="25"
+                Click="Cancel_Click"
+                />
+        
+        
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="2"
+                   Text="Материалы:"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+
+        <Border x:Name="ListMaterialBorder"
+                Grid.Column="2"
+                Grid.Row="2"
+                Grid.RowSpan="4"
+                BorderThickness="1"
+                Margin="5,5,50,5">
+            
+        </Border>
+        <ListView x:Name="ListMaterial"
+                  Grid.Row="2"
+                  Grid.Column="2"
+                  Grid.RowSpan="4"
+                  Margin="10,10,100,10"
+                  Visibility="Hidden">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Наименование"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Цена(руб.) за ед.изм."
+                                    DisplayMemberBinding="{Binding Cost}"/>
+                    <GridViewColumn Header="Еденица измерения"
+                                    DisplayMemberBinding="{Binding Unit}"/>
+                    <GridViewColumn Header="Количество"
+                                    DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="Сумма(руб.)"
+                                    DisplayMemberBinding="{Binding Sum}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="AddMaterial"
+                Style="{StaticResource jB}"
+                Background="#3dc147"
+                Grid.Row="2"
+                Grid.Column="2"
+                Margin="480,20,60,20"
+                Content="+"
+                FontSize="20"
+                Click="AddMaterial_Click"
+                Visibility="Hidden"
+                />
+        <Button x:Name="DeleteMaterial"
+                Style="{StaticResource jB}"
+                Background="Red"
+                Grid.Row="3"
+                Grid.Column="2"
+                Margin="480,20,60,20"
+                Content="-"
+                FontSize="20"
+                Click="DeleteMaterial_Click"
+                Visibility="Hidden"
+                />
+
+        <ComboBox x:Name="NameBoxMaterial"
+                 Grid.Row="2"
+                 Grid.Column="2"
+                 FontSize="18"
+                 Margin="20,15,100,20"
+                 SelectionChanged="NameBoxMaterial_SelectionChanged"/>
+        <TextBlock x:Name="CostTextMaterial"
+                   Text="Цена(руб.) за ед.изм.:"
+                   FontSize="18"
+                   Grid.Row="3"
+                   Grid.Column="2"
+                   Margin="20,0,360,40"/>
+        <TextBlock x:Name="CostBlockMaterial"
+                   FontSize="18"
+                   Grid.Row="3"
+                   Grid.Column="2"
+                   Margin="20,20,400,20"/>
+
+        <TextBlock x:Name="UnitTextMaterial"
+                   Text="Еденица измерения:"
+                   FontSize="18"
+                   Grid.Row="3"
+                   Grid.Column="2"
+                   Margin="300,0,100,40"/>
+        <TextBlock x:Name="UnitBlockMaterial"
+                   FontSize="18"
+                   Grid.Row="3"
+                   Grid.Column="2"
+                   Margin="300,20,100,20"/>
+
+        <TextBlock x:Name="QuantityTextMaterial"
+                   Text="Количество:"
+                   FontSize="18"
+                   Grid.Row="4"
+                   Grid.Column="2"
+                   Margin="20,0,400,40"/>
+        <TextBox x:Name="QuantityBoxMaterial"
+                 Text="1"
+                 FontSize="18"
+                 Grid.Row="4"
+                 Grid.Column="2"
+                 Margin="20,25,400,20"
+                 TextChanged="QuantityBoxMaterial_TextChanged"
+                 PreviewTextInput="QuantityBox_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"
+                 BorderBrush="Red"
+                 BorderThickness="0"
+                 MaxLength="5"/>
+
+        <TextBlock x:Name="SumCostTextMaterial"
+                   Text="Сумма(руб.):"
+                   FontSize="18"
+                   Grid.Row="4"
+                   Grid.Column="2"
+                   Margin="300,0,100,40"/>
+        <TextBlock x:Name="SumCostMaterial"
+                   FontSize="18"
+                   Grid.Row="4"
+                   Grid.Column="2"
+                   Margin="300,20,100,20"/>
+
+        <Button x:Name="AddServiceListMaterial"
+                Style="{StaticResource jB}"
+                Background="#3dc147"
+                Grid.Row="5"
+                Grid.Column="2"
+                Margin="20,20,300,10"
+                Content="Добавить"
+                FontSize="28"
+                Click="AddServiceListMaterial_Click"
+                />
+        <Button x:Name="CancelMaterial"
+                Style="{StaticResource jB}"
+                Background="Red"
+                Grid.Row="5"
+                Grid.Column="2"
+                Margin="350,20,100,10"
+                Content="Отмена"
+                FontSize="25"
+                Click="CancelMaterial_Click"
+                />
+
+        <TextBlock Grid.Row="6"
+                   Grid.Column="2"
+                   Text="Дата завершения работ:"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,300,0"/>
+        <DatePicker x:Name="DateBox"
+                    FontSize="18"
+                    Margin="280,20,100,20"
+                    Grid.Row="6"
+                    Grid.Column="2"
+                    BorderBrush="LightSlateGray"/>
+
+        <TextBlock Text="Сумма заказа(руб.)"
+                   Grid.Row="8"
+                   Grid.Column="2"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,340,0"
+                   />
+        <TextBlock x:Name="SumAll"
+                   Grid.Row="8"
+                   Grid.Column="2"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="300,0,20,0"
+                   />
+        <Button x:Name="OrderFinish"
+                Style="{StaticResource jB}"
+                Background="#3dc147"
+                Grid.Row="9"
+                Grid.Column="2"
+                Margin="230,20,20,10"
+                Content="Сформировать заказ"
+                FontSize="28"
+                Click="OrderFinish_Click"
+                />
+    </Grid>
+</Page>
