@@ -81,6 +81,7 @@
                     Margin="200,40,130,40"
                     Grid.Row="4"
                     Grid.Column="1"
+                    
                     BorderBrush="LightSlateGray"/>
 
         <TextBlock Grid.Row="1"
@@ -89,10 +90,10 @@
                    FontSize="26"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Right"
-                   Margin="0,0,360,0"/>
+                   Margin="0,0,320,0"/>
         <TextBox x:Name="TelephonBox"
                  FontSize="26"
-                 Margin="220,40,60,40"
+                 Margin="260,40,20,40"
                  Grid.Row="1"
                  Grid.Column="2"
                  BorderBrush="LightSlateGray"/>
@@ -104,10 +105,10 @@
                    FontSize="26"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Right"
-                   Margin="0,0,360,0"/>
+                   Margin="0,0,320,0"/>
         <ComboBox x:Name="SpesBox"
                  FontSize="26"
-                 Margin="220,40,60,40"
+                 Margin="260,40,20,40"
                  Grid.Row="2"
                  Grid.Column="2"
                  BorderBrush="LightSlateGray"/>
@@ -117,14 +118,14 @@
                 Grid.Row="2"
                 Grid.RowSpan="2"
                 BorderThickness="1"
-                Margin="5,5,50,5">
+                Margin="50,5,5,5">
         </Border>
 
         <ListView x:Name="ListSpecialty"
                   Grid.Row="2"
                   Grid.Column="2"
                   Grid.RowSpan="2"
-                  Margin="10,10,100,10"
+                  Margin="100,10,10,10"
                   Visibility="Hidden">
             <ListView.View>
                 <GridView>
@@ -139,7 +140,7 @@
                 Background="#3dc147"
                 Grid.Row="2"
                 Grid.Column="2"
-                Margin="480,40,60,40"
+                Margin="60,50,480,40"
                 Content="+"
                 FontSize="20"
                 Visibility="Hidden"
@@ -150,7 +151,7 @@
                 Background="Red"
                 Grid.Row="3"
                 Grid.Column="2"
-                Margin="480,40,60,40"
+                Margin="60,0,480,90"
                 Content="-"
                 FontSize="20"
                 Visibility="Hidden"
@@ -161,7 +162,7 @@
                 Background="#3dc147"
                 Grid.Row="3"
                 Grid.Column="2"
-                Margin="20,40,300,40"
+                Margin="60,40,300,40"
                 Content="Добавить"
                 FontSize="28"
                 Click="AddSpecialtyList_Click"
@@ -171,7 +172,7 @@
                 Background="Red"
                 Grid.Row="3"
                 Grid.Column="2"
-                Margin="370,40,60,40"
+                Margin="410,40,20,40"
                 Content="Отмена"
                 FontSize="25"
                 Click="CancelSpecialty_Click"

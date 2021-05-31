@@ -31,7 +31,12 @@ namespace ConstructionCompany.Pages.WorkerPages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             spesboxlist.AddRange(AppData.context.Specialty.Select(i => i.Name).ToList());
-            SpesBox.ItemsSource = spesboxlist;
+            foreach (var item in spesboxlist)
+                SpesBox.Items.Add(item);
+            SpesBox.SelectedIndex = 0;
+
+            DateBirthBox.SelectedDate = DateTime.Now.AddYears(-18);
+
         }
 
         private void WorkerFinish_Click(object sender, RoutedEventArgs e)
@@ -67,10 +72,15 @@ namespace ConstructionCompany.Pages.WorkerPages
         {
             SpecialtyClass specialtyClass = new SpecialtyClass();
             specialtyClass.Name = SpesBox.Text;
+
             ListSpecialty.Items.Add(specialtyClass);
             speslist.Add(specialtyClass);
-            spesboxlist.Remove(SpesBox.Text);
-            SpesBox.Items.Refresh();
+
+            SpesBox.Items.Remove(SpesBox.Text);
+            if (SpesBox.Items.Count == 0)
+                AddSpecialtyList.IsEnabled = false;
+            SpesBox.SelectedIndex = 0;
+
             CancelSpecialty_Click(sender, e);
         }
 
@@ -129,8 +139,10 @@ namespace ConstructionCompany.Pages.WorkerPages
             SpecialtyClass specialtyClass = (SpecialtyClass)ListSpecialty.SelectedItem;
             if(specialtyClass != null)
             {
-                spesboxlist.Add(specialtyClass.Name);
-                SpesBox.Items.Refresh();
+                SpesBox.Items.Add(specialtyClass.Name);
+                if (SpesBox.Items.Count != 0)
+                    AddSpecialtyList.IsEnabled = true;
+                SpesBox.SelectedIndex = 0;
                 ListSpecialty.Items.Remove(specialtyClass);
                 speslist.Remove(specialtyClass);
             }

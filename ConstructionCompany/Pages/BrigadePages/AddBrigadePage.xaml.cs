@@ -43,8 +43,10 @@ namespace ConstructionCompany.Pages.BrigadePages
                 else
                     FIO.Add(idWorker[i] + "  " + NameWorker[i] + ' ' + SurNameWorker[i] + ' ' + PatronymicWorker[i] + " (" + SpecialityWorker[i] + ')');
             }
-            WorkerBox.ItemsSource = FIO;
-            BrigadierBox.ItemsSource = FIOBrigadier;
+            foreach (var item in FIO)
+                WorkerBox.Items.Add(item);
+            foreach (var item in FIOBrigadier)
+                BrigadierBox.Items.Add(item);
         }
 
         private void BrigadeFinish_Click(object sender, RoutedEventArgs e)
@@ -88,6 +90,11 @@ namespace ConstructionCompany.Pages.BrigadePages
 
             workerClasses.Add(worker);
             ListWoker.Items.Add(worker);
+
+            WorkerBox.Items.Remove(WorkerBox.Text);
+            WorkerBox.SelectedIndex = 0;
+            if (WorkerBox.Items.Count == 0)
+                AddWokerList.IsEnabled = false;
             CancelWoker_Click(sender, e);
         }
 
@@ -116,6 +123,9 @@ namespace ConstructionCompany.Pages.BrigadePages
         private void DeleteWoker_Click(object sender, RoutedEventArgs e)
         {
             workerClass workerClass = (workerClass)ListWoker.SelectedItem;
+            WorkerBox.Items.Add(workerClass.idWorker + "  " + workerClass.Name + ' ' + workerClass.SurName + ' ' + workerClass.Patronymic + " (" + workerClass.Speciality + ')');
+            if (WorkerBox.Items.Count != 0)
+                AddWokerList.IsEnabled = true;
             workerClasses.Remove(workerClass);
             ListWoker.Items.Remove(workerClass);
         }

@@ -37,13 +37,18 @@ namespace ConstructionCompany.Pages.OrderPages
         {
             TypeObject.AddRange(AppData.context.objectType.Select(i => i.Type).ToList());
             TypeObjectBox.ItemsSource = TypeObject;
+
             Brigades.AddRange(AppData.context.Brigade.Select(i => i.Name).ToList());
             BrigadeBox.ItemsSource = Brigades;
+
             NameService.AddRange(AppData.context.Service.Select(i => i.Name).ToList());
-            NameBox.ItemsSource = NameService;
+            foreach (var item in NameService)
+                NameBox.Items.Add(item);
             NameBox.SelectedIndex = 0;
+
             NameMaterial.AddRange(AppData.context.Material.Select(i => i.Name).ToList());
-            NameBoxMaterial.ItemsSource = NameMaterial;
+            foreach (var item in NameMaterial)
+                NameBoxMaterial.Items.Add(item);
             NameBoxMaterial.SelectedIndex = 0;
 
             DateBox.BlackoutDates.AddDatesInPast();
@@ -52,13 +57,16 @@ namespace ConstructionCompany.Pages.OrderPages
 
         private void NameBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string txt = NameBox.SelectedValue.ToString();
-            CostBlock.Text = AppData.context.Service.Where(i => i.Name == txt).Select(j => j.Cost).FirstOrDefault().ToString();
-            UnitBlock.Text = AppData.context.Service.Where(i => i.Name == txt).Select(j => j.unit).FirstOrDefault();
-            if (QuantityBox.Text != "")
-                SumCost.Text = (Int32.Parse(CostBlock.Text) * Int32.Parse(QuantityBox.Text)).ToString();
-            else
-                QuantityBox.BorderThickness = new Thickness(3);
+            if(NameBox.SelectedValue != null)
+            {
+                string txt = NameBox.SelectedValue.ToString();
+                CostBlock.Text = AppData.context.Service.Where(i => i.Name == txt).Select(j => j.Cost).FirstOrDefault().ToString();
+                UnitBlock.Text = AppData.context.Service.Where(i => i.Name == txt).Select(j => j.unit).FirstOrDefault();
+                if (QuantityBox.Text != "")
+                    SumCost.Text = (Int32.Parse(CostBlock.Text) * Int32.Parse(QuantityBox.Text)).ToString();
+                else
+                    QuantityBox.BorderThickness = new Thickness(3);
+            }
             
         }
 
@@ -134,10 +142,23 @@ namespace ConstructionCompany.Pages.OrderPages
                 view.Quantity = Int32.Parse(QuantityBox.Text);
                 view.Sum = Int32.Parse(SumCost.Text);
 
-                ListService.Items.Add(view);
-                viewServises.Add(view);
-                Cancel_Click(sender, e);
-                SumAllText();
+                if (view.Quantity > 0)
+                {
+                    QuantityBox.BorderThickness = new Thickness(0);
+
+                    NameBox.Items.Remove(view.Name);
+                    NameBox.SelectedIndex = 0;
+                    if (NameBox.Items.Count == 0)
+                        AddServiceList.IsEnabled = false;
+
+                    ListService.Items.Add(view);
+                    viewServises.Add(view);
+                    Cancel_Click(sender, e);
+                    SumAllText();
+                }
+                else
+                    QuantityBox.BorderThickness = new Thickness(2);
+
             }
         }
 
@@ -146,6 +167,10 @@ namespace ConstructionCompany.Pages.OrderPages
             ViewServise view = (ViewServise)ListService.SelectedItem;
             if (view != null)
             {
+                NameBox.Items.Add(view.Name);
+                if (NameBox.Items.Count != 0)
+                    AddServiceList.IsEnabled = true;
+
                 ListService.Items.Remove(view);
                 viewServises.Remove(view);
                 SumAllText();
@@ -154,13 +179,17 @@ namespace ConstructionCompany.Pages.OrderPages
 
         private void NameBoxMaterial_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string txt = NameBoxMaterial.SelectedValue.ToString();
-            CostBlockMaterial.Text = AppData.context.Material.Where(i => i.Name == txt).Select(j => j.Cost).FirstOrDefault().ToString();
-            UnitBlockMaterial.Text = AppData.context.Material.Where(i => i.Name == txt).Select(j => j.unit).FirstOrDefault();
-            if (QuantityBoxMaterial.Text != "")
-                SumCostMaterial.Text = (Int32.Parse(CostBlockMaterial.Text) * Int32.Parse(QuantityBoxMaterial.Text)).ToString();
-            else
-                QuantityBoxMaterial.BorderThickness = new Thickness(3);
+            if (NameBoxMaterial.SelectedValue != null)
+            {
+                string txt = NameBoxMaterial.SelectedValue.ToString();
+                CostBlockMaterial.Text = AppData.context.Material.Where(i => i.Name == txt).Select(j => j.Cost).FirstOrDefault().ToString();
+                UnitBlockMaterial.Text = AppData.context.Material.Where(i => i.Name == txt).Select(j => j.unit).FirstOrDefault();
+                if (QuantityBoxMaterial.Text != "")
+                    SumCostMaterial.Text = (Int32.Parse(CostBlockMaterial.Text) * Int32.Parse(QuantityBoxMaterial.Text)).ToString();
+                else
+                    QuantityBoxMaterial.BorderThickness = new Thickness(3);
+            }
+                
         }
 
         private void QuantityBoxMaterial_TextChanged(object sender, TextChangedEventArgs e)
@@ -214,6 +243,7 @@ namespace ConstructionCompany.Pages.OrderPages
                 QuantityBoxMaterial.BorderThickness = new Thickness(3);
             else
             {
+
                 ViewMaterial view = new ViewMaterial();
                 view.Name = NameBoxMaterial.Text;
                 view.Cost = Int32.Parse(CostBlockMaterial.Text);
@@ -221,10 +251,23 @@ namespace ConstructionCompany.Pages.OrderPages
                 view.Quantity = Int32.Parse(QuantityBoxMaterial.Text);
                 view.Sum = Int32.Parse(SumCostMaterial.Text);
 
-                ListMaterial.Items.Add(view);
-                viewMaterials.Add(view);
-                CancelMaterial_Click(sender, e);
-                SumAllText();
+                if (view.Quantity > 0)
+                {
+                    QuantityBoxMaterial.BorderThickness = new Thickness(0);
+
+                    NameBoxMaterial.Items.Remove(view.Name);
+                    NameBoxMaterial.SelectedIndex = 0;
+                    if (NameBoxMaterial.Items.Count == 0)
+                        AddServiceListMaterial.IsEnabled = false;
+
+
+                    ListMaterial.Items.Add(view);
+                    viewMaterials.Add(view);
+                    CancelMaterial_Click(sender, e);
+                    SumAllText();
+                }
+                else
+                    QuantityBoxMaterial.BorderThickness = new Thickness(3);
             }
         }
 
@@ -233,6 +276,9 @@ namespace ConstructionCompany.Pages.OrderPages
             ViewMaterial view = (ViewMaterial)ListMaterial.SelectedItem;
             if (view != null)
             {
+                NameBoxMaterial.Items.Add(view.Name);
+                if (NameBoxMaterial.Items.Count != 0)
+                    AddServiceListMaterial.IsEnabled = true;
                 ListMaterial.Items.Remove(view);
                 viewMaterials.Remove(view);
                 SumAllText();

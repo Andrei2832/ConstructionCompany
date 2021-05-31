@@ -250,14 +250,14 @@
                 Grid.Row="2"
                 Grid.RowSpan="4"
                 BorderThickness="1"
-                Margin="5,5,50,5">
+                Margin="50,5,5,5">
             
         </Border>
         <ListView x:Name="ListMaterial"
                   Grid.Row="2"
                   Grid.Column="2"
                   Grid.RowSpan="4"
-                  Margin="10,10,100,10"
+                  Margin="100,10,10,10"
                   Visibility="Hidden">
             <ListView.View>
                 <GridView>
@@ -279,7 +279,7 @@
                 Background="#3dc147"
                 Grid.Row="2"
                 Grid.Column="2"
-                Margin="480,20,60,20"
+                Margin="60,20,480,20"
                 Content="+"
                 FontSize="20"
                 Click="AddMaterial_Click"
@@ -290,7 +290,7 @@
                 Background="Red"
                 Grid.Row="3"
                 Grid.Column="2"
-                Margin="480,20,60,20"
+                Margin="60,20,480,20"
                 Content="-"
                 FontSize="20"
                 Click="DeleteMaterial_Click"
@@ -301,44 +301,44 @@
                  Grid.Row="2"
                  Grid.Column="2"
                  FontSize="18"
-                 Margin="20,15,100,20"
+                 Margin="100,15,20,20"
                  SelectionChanged="NameBoxMaterial_SelectionChanged"/>
         <TextBlock x:Name="CostTextMaterial"
                    Text="Цена(руб.) за ед.изм.:"
                    FontSize="18"
                    Grid.Row="3"
                    Grid.Column="2"
-                   Margin="20,0,360,40"/>
+                   Margin="100,0,280,40"/>
         <TextBlock x:Name="CostBlockMaterial"
                    FontSize="18"
                    Grid.Row="3"
                    Grid.Column="2"
-                   Margin="20,20,400,20"/>
+                   Margin="100,20,320,20"/>
 
         <TextBlock x:Name="UnitTextMaterial"
                    Text="Еденица измерения:"
                    FontSize="18"
                    Grid.Row="3"
                    Grid.Column="2"
-                   Margin="300,0,100,40"/>
+                   Margin="380,0,20,40"/>
         <TextBlock x:Name="UnitBlockMaterial"
                    FontSize="18"
                    Grid.Row="3"
                    Grid.Column="2"
-                   Margin="300,20,100,20"/>
+                   Margin="380,20,20,20"/>
 
         <TextBlock x:Name="QuantityTextMaterial"
                    Text="Количество:"
                    FontSize="18"
                    Grid.Row="4"
                    Grid.Column="2"
-                   Margin="20,0,400,40"/>
+                   Margin="100,0,320,40"/>
         <TextBox x:Name="QuantityBoxMaterial"
                  Text="1"
                  FontSize="18"
                  Grid.Row="4"
                  Grid.Column="2"
-                 Margin="20,25,400,20"
+                 Margin="100,25,320,20"
                  TextChanged="QuantityBoxMaterial_TextChanged"
                  PreviewTextInput="QuantityBox_PreviewTextInput"
                  PreviewKeyDown="QuantityBox_PreviewKeyDown"
@@ -351,19 +351,19 @@
                    FontSize="18"
                    Grid.Row="4"
                    Grid.Column="2"
-                   Margin="300,0,100,40"/>
+                   Margin="380,0,20,40"/>
         <TextBlock x:Name="SumCostMaterial"
                    FontSize="18"
                    Grid.Row="4"
                    Grid.Column="2"
-                   Margin="300,20,100,20"/>
+                   Margin="380,20,20,20"/>
 
         <Button x:Name="AddServiceListMaterial"
                 Style="{StaticResource jB}"
                 Background="#3dc147"
                 Grid.Row="5"
                 Grid.Column="2"
-                Margin="20,20,300,10"
+                Margin="100,20,220,10"
                 Content="Добавить"
                 FontSize="28"
                 Click="AddServiceListMaterial_Click"
@@ -373,7 +373,7 @@
                 Background="Red"
                 Grid.Row="5"
                 Grid.Column="2"
-                Margin="350,20,100,10"
+                Margin="430,20,20,10"
                 Content="Отмена"
                 FontSize="25"
                 Click="CancelMaterial_Click"
@@ -385,10 +385,10 @@
                    FontSize="24"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Right"
-                   Margin="0,0,300,0"/>
+                   Margin="0,0,220,0"/>
         <DatePicker x:Name="DateBox"
                     FontSize="18"
-                    Margin="280,20,100,20"
+                    Margin="360,20,20,20"
                     Grid.Row="6"
                     Grid.Column="2"
                     BorderBrush="LightSlateGray"/>
