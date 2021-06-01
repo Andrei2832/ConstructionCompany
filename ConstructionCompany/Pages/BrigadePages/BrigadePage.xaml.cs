@@ -38,11 +38,19 @@ namespace ConstructionCompany.Pages.BrigadePages
             Entity.BrigadeView brigade = (Entity.BrigadeView)View.SelectedItem;
             if (brigade != null)
             {
-                AppData.context.Brigade.Remove(AppData.context.Brigade.Where(i => i.idBrigade == brigade.idBrigade).FirstOrDefault());
-                AppData.context.SaveChanges();
-                MessageBox.Show("Бригада удалёна!");
-                Views.Remove(brigade);
-                View.Items.Refresh();
+                try
+                {
+                    AppData.context.WorkersBrigade.RemoveRange(AppData.context.WorkersBrigade.Where(j => j.idBrigade == brigade.idBrigade).ToList());
+                    AppData.context.Brigade.Remove(AppData.context.Brigade.Where(i => i.idBrigade == brigade.idBrigade).FirstOrDefault());
+                    AppData.context.SaveChanges();
+                    MessageBox.Show("Бригада удалёна!");
+                    Views.Remove(brigade);
+                    View.Items.Refresh();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Нельзя удалить бригаду выполняющую заказ!");
+                }
             }
             else
                 MessageBox.Show("Выберите бригаду!");

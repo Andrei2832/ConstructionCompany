@@ -47,6 +47,7 @@ namespace ConstructionCompany.Pages.BrigadePages
                 WorkerBox.Items.Add(item);
             foreach (var item in FIOBrigadier)
                 BrigadierBox.Items.Add(item);
+            WorkerBox.SelectedIndex = 0;
         }
 
         private void BrigadeFinish_Click(object sender, RoutedEventArgs e)
@@ -78,24 +79,25 @@ namespace ConstructionCompany.Pages.BrigadePages
 
         private void AddWokerList_Click(object sender, RoutedEventArgs e)
         {
-            String[] split = WorkerBox.Text.Split(' ');
-            int id = Int32.Parse(split[0]);
+                String[] split = WorkerBox.Text.Split(' ');
+                int id = Int32.Parse(split[0]);
 
-            workerClass worker = new workerClass();
-            worker.idWorker = id;
-            worker.Name = AppData.context.Worker.Where(i => i.idWorker == id).Select(j => j.Name).FirstOrDefault();
-            worker.SurName = AppData.context.Worker.Where(i => i.idWorker == id).Select(j => j.Surname).FirstOrDefault();
-            worker.Patronymic = AppData.context.Worker.Where(i => i.idWorker == id).Select(j => j.Patronymic).FirstOrDefault();
-            worker.Speciality = AppData.context.WorkerView.Where(i => i.idWorker == id).Select(j => j.Expr1).FirstOrDefault();
+                workerClass worker = new workerClass();
+                worker.idWorker = id;
+                worker.Name = AppData.context.Worker.Where(i => i.idWorker == id).Select(j => j.Name).FirstOrDefault();
+                worker.SurName = AppData.context.Worker.Where(i => i.idWorker == id).Select(j => j.Surname).FirstOrDefault();
+                worker.Patronymic = AppData.context.Worker.Where(i => i.idWorker == id).Select(j => j.Patronymic).FirstOrDefault();
+                worker.Speciality = AppData.context.WorkerView.Where(i => i.idWorker == id).Select(j => j.Expr1).FirstOrDefault();
 
-            workerClasses.Add(worker);
-            ListWoker.Items.Add(worker);
+                workerClasses.Add(worker);
+                ListWoker.Items.Add(worker);
 
-            WorkerBox.Items.Remove(WorkerBox.Text);
-            WorkerBox.SelectedIndex = 0;
-            if (WorkerBox.Items.Count == 0)
-                AddWokerList.IsEnabled = false;
-            CancelWoker_Click(sender, e);
+                WorkerBox.Items.Remove(WorkerBox.Text);
+                WorkerBox.SelectedIndex = 0;
+                if (WorkerBox.Items.Count == 0)
+                    AddWokerList.IsEnabled = false;
+                CancelWoker_Click(sender, e);
+            
         }
 
         private void CancelWoker_Click(object sender, RoutedEventArgs e)
