@@ -39,7 +39,10 @@
                  Margin="200,40,60,40"
                  Grid.Row="1"
                  Grid.Column="1"
-                 BorderBrush="LightSlateGray"/>
+                 MaxLength="100"
+                 BorderBrush="LightSlateGray"
+                 PreviewTextInput="IsLetter_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"/>
         
         <TextBlock Grid.Row="2"
                    Grid.Column="1"
@@ -53,7 +56,10 @@
                  Margin="200,40,60,40"
                  Grid.Row="2"
                  Grid.Column="1"
-                 BorderBrush="LightSlateGray"/>
+                 MaxLength="100"
+                 BorderBrush="LightSlateGray"
+                 PreviewTextInput="IsLetter_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"/>
 
         <TextBlock Grid.Row="3"
                    Grid.Column="1"
@@ -67,7 +73,10 @@
                  Margin="200,40,60,40"
                  Grid.Row="3"
                  Grid.Column="1"
-                 BorderBrush="LightSlateGray"/>
+                 MaxLength="100"
+                 BorderBrush="LightSlateGray"
+                 PreviewTextInput="IsLetter_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"/>
         
         <TextBlock Grid.Row="4"
                    Grid.Column="1"
@@ -96,7 +105,10 @@
                  Margin="260,40,20,40"
                  Grid.Row="1"
                  Grid.Column="2"
-                 BorderBrush="LightSlateGray"/>
+                 MaxLength="11"
+                 BorderBrush="LightSlateGray"
+                 PreviewTextInput="IsDigit_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"/>
 
         <TextBlock x:Name="SpesBlock"
                    Grid.Row="2"

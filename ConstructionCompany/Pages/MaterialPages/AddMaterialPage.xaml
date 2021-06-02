@@ -37,7 +37,10 @@
                  Margin="240,40,30,40"
                  Grid.Row="2"
                  Grid.Column="1"
-                 BorderBrush="LightSlateGray"/>
+                 MaxLength="100"
+                 BorderBrush="LightSlateGray"
+                 PreviewTextInput="IsDigitIsLetter_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"/>
 
         <TextBlock Grid.Row="3"
                    Grid.Column="1"
@@ -51,7 +54,10 @@
                  Margin="240,40,30,40"
                  Grid.Row="3"
                  Grid.Column="1"
-                 BorderBrush="LightSlateGray"/>
+                 MaxLength="100"
+                 BorderBrush="LightSlateGray"
+                 PreviewTextInput="IsLetterAndPoint_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"/>
 
         <TextBlock Grid.Row="2"
                    Grid.Column="2"
@@ -65,7 +71,10 @@
                  Margin="200,40,60,40"
                  Grid.Row="2"
                  Grid.Column="2"
-                 BorderBrush="LightSlateGray"/>
+                 MaxLength="15"
+                 BorderBrush="LightSlateGray"
+                 PreviewTextInput="IsDigit_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"/>
         <Button x:Name="MaterialFinish"
                 Style="{StaticResource jB}"
                 Background="#3dc147"

@@ -59,5 +59,27 @@ namespace ConstructionCompany.Pages.MaterialPages
                 CostBox.BorderBrush = Brushes.LightSlateGray;
 
         }
+        private void IsDigitIsLetter_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0) && !e.Text.Contains(' ') && !Char.IsLetter(e.Text, 0))
+                e.Handled = true;
         }
+        private void IsDigit_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0) && !e.Text.Contains(' '))
+                e.Handled = true;
+        }
+        private void IsLetterAndPoint_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0) && !e.Text.Contains(' ') && !e.Text.Contains('.'))
+                e.Handled = true;
+        }
+        private void QuantityBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+    }
 }

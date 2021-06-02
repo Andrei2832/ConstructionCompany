@@ -147,6 +147,23 @@ namespace ConstructionCompany.Pages.WorkerPages
                 speslist.Remove(specialtyClass);
             }
         }
+        private void IsDigit_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0) && !e.Text.Contains(' '))
+                e.Handled = true;
+        }
+        private void IsLetter_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0) && !e.Text.Contains(' '))
+                e.Handled = true;
+        }
+        private void QuantityBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
     }
     class SpecialtyClass
     {

@@ -146,6 +146,18 @@ namespace ConstructionCompany.Pages.BrigadePages
             else
                 ListWokerBorder.BorderBrush = Brushes.Transparent;
         }
+        private void IsDigitIsLetter_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0) && !e.Text.Contains(' ') && !Char.IsLetter(e.Text, 0))
+                e.Handled = true;
+        }
+        private void QuantityBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
     }
     class workerClass
     {

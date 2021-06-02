@@ -55,5 +55,6 @@ namespace ConstructionCompany.Pages.BrigadePages
             else
                 MessageBox.Show("Выберите бригаду!");
         }
+        
     }
 }

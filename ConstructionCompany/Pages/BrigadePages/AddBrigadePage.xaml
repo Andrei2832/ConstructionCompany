@@ -38,7 +38,10 @@
                  Margin="230,40,60,40"
                  Grid.Row="2"
                  Grid.Column="1"
-                 BorderBrush="LightSlateGray"/>
+                 MaxLength="100"
+                 BorderBrush="LightSlateGray"
+                 PreviewTextInput="IsDigitIsLetter_PreviewTextInput"
+                 PreviewKeyDown="QuantityBox_PreviewKeyDown"/>
         
         <TextBlock Grid.Row="3"
                    Grid.Column="1"
