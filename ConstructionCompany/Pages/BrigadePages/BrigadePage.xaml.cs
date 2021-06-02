@@ -21,7 +21,6 @@ namespace ConstructionCompany.Pages.BrigadePages
     /// </summary>
     public partial class BrigadePage : Page
     {
-        List<Entity.BrigadeView> Views = new List<Entity.BrigadeView>();
         public BrigadePage()
         {
             InitializeComponent();
@@ -29,8 +28,8 @@ namespace ConstructionCompany.Pages.BrigadePages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Views.AddRange(Entity.AppData.context.BrigadeView.ToList());
-            View.ItemsSource = Views;
+            List<Entity.BrigadeView> Views = Entity.AppData.context.BrigadeView.ToList();
+            LoadView(Views);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -44,8 +43,7 @@ namespace ConstructionCompany.Pages.BrigadePages
                     AppData.context.Brigade.Remove(AppData.context.Brigade.Where(i => i.idBrigade == brigade.idBrigade).FirstOrDefault());
                     AppData.context.SaveChanges();
                     MessageBox.Show("Бригада удалёна!");
-                    Views.Remove(brigade);
-                    View.Items.Refresh();
+                    View.Items.Remove(brigade);
                 }
                 catch (Exception)
                 {
@@ -55,6 +53,30 @@ namespace ConstructionCompany.Pages.BrigadePages
             else
                 MessageBox.Show("Выберите бригаду!");
         }
-        
+        private void Searchbut_Click(object sender, RoutedEventArgs e)
+        {
+
+            List<Entity.BrigadeView> view = AppData.context.BrigadeView.ToList();
+            if (SearchName.Text != "")
+                view = view.FindAll(i => i.Name == SearchName.Text);
+            if (SearchBrig.Text != "")
+                view = view.FindAll(i => i.Brigadier == SearchBrig.Text);
+            LoadView(view);
+
+        }
+        public void LoadView(List<Entity.BrigadeView> views)
+        {
+            View.Items.Clear();
+            foreach (var item in views)
+                View.Items.Add(item);
+        }
+
+        private void SearchClear_Click(object sender, RoutedEventArgs e)
+        {
+            SearchName.Text = "";
+            SearchBrig.Text = "";
+            List<Entity.BrigadeView> Views = Entity.AppData.context.BrigadeView.ToList();
+            LoadView(Views);
+        }
     }
 }

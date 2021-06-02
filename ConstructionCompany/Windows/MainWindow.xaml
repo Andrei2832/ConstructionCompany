@@ -67,7 +67,7 @@
                     Click="ServicelBut_Click"/>
             <Button x:Name="CancelBut" 
                     Style="{StaticResource jB}"
-                    Background="Red"
+                    Background="#FFC71F1F"
                     Visibility="Hidden"
                     Content="Отменить"
                     Width="140"

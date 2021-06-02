@@ -21,7 +21,6 @@ namespace ConstructionCompany.Pages.MaterialPages
     /// </summary>
     public partial class MaterialPage : Page
     {
-        List<Entity.Material> Views = new List<Entity.Material>();
         public MaterialPage()
         {
             InitializeComponent();
@@ -29,8 +28,8 @@ namespace ConstructionCompany.Pages.MaterialPages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Views.AddRange(Entity.AppData.context.Material.ToList());
-            View.ItemsSource = Views;
+            List<Entity.Material> Views = Entity.AppData.context.Material.ToList();
+            LoadView(Views);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -41,11 +40,32 @@ namespace ConstructionCompany.Pages.MaterialPages
                 AppData.context.Material.Remove(AppData.context.Material.Where(i => i.idMaterial == material.idMaterial).FirstOrDefault());
                 AppData.context.SaveChanges();
                 MessageBox.Show("Материал удалёна!");
-                Views.Remove(material);
-                View.Items.Refresh();
+                View.Items.Remove(material);
             }
             else
                 MessageBox.Show("Выберите материал!");
+        }
+        private void Searchbut_Click(object sender, RoutedEventArgs e)
+        {
+
+            List<Entity.Material> view = AppData.context.Material.ToList();
+            if (SearchName.Text != "")
+                view = view.FindAll(i => i.Name == SearchName.Text);
+            LoadView(view);
+
+        }
+        public void LoadView(List<Entity.Material> views)
+        {
+            View.Items.Clear();
+            foreach (var item in views)
+                View.Items.Add(item);
+        }
+
+        private void SearchClear_Click(object sender, RoutedEventArgs e)
+        {
+            SearchName.Text = "";
+            List<Entity.Material> Views = Entity.AppData.context.Material.ToList();
+            LoadView(Views);
         }
     }
 }

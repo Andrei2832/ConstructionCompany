@@ -121,7 +121,7 @@
                 />
         <Button x:Name="DeleteWoker"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 Grid.Row="3"
                 Grid.Column="2"
                 Margin="480,40,60,40"
@@ -142,7 +142,7 @@
                 />
         <Button x:Name="CancelWoker"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 Grid.Row="3"
                 Grid.Column="2"
                 Margin="370,40,60,40"

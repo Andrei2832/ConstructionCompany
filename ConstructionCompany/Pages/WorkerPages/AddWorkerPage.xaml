@@ -160,7 +160,7 @@
                 />
         <Button x:Name="DeleteSpecialty"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 Grid.Row="3"
                 Grid.Column="2"
                 Margin="60,0,480,90"
@@ -181,7 +181,7 @@
                 />
         <Button x:Name="CancelSpecialty"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 Grid.Row="3"
                 Grid.Column="2"
                 Margin="410,40,20,40"

@@ -11,10 +11,46 @@
       Title="Brigade">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.11*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Поиск по Названию бригады"
+                   Margin="10,10,1000,10"
+                   FontSize="12"
+                   HorizontalAlignment="Center"/>
+        <TextBox x:Name="SearchName"
+                 FontSize="14"
+                 Margin="10,30,1000,10"/>
+
+        <TextBlock Text="Поиск по бригадиру"
+                   Margin="300,10,700,10"
+                   FontSize="12"
+                   HorizontalAlignment="Center"/>
+        <TextBox x:Name="SearchBrig"
+                 FontSize="12"
+                 Margin="300,30,700,10"/>
+
+        <Button x:Name="Searchbut"
+                Style="{StaticResource jB}"
+                Background="#FF9ACBF3"
+                Content="Поиск"
+                FontSize="14"
+                Margin="600,30,550,10"
+                Click="Searchbut_Click"/>
+
+        <Button x:Name="SearchClear"
+                Style="{StaticResource jB}"
+                Background="#FF9ACBF3"
+                Content="Очистить"
+                FontSize="14"
+                Margin="720,30,430,10"
+                Click="SearchClear_Click"/>
         <ListView x:Name="View"
                   Background="Transparent"
                   Foreground="Black"
-                  FontSize="20"
+                  FontSize="20" 
+                  Grid.Row="1"
                   >
             <ListView.View>
                 <GridView>
@@ -32,11 +68,11 @@
         </ListView>
         <Button x:Name="Delete"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 BorderBrush="Transparent"
                 Content="Удалить"
                 FontSize="24"
-                Margin="1100,580,5,5"
-                Click="Delete_Click"/>
+                Margin="1100,520,5,5"
+                Click="Delete_Click" Grid.Row="1"/>
     </Grid>
 </Page>

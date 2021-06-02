@@ -150,7 +150,7 @@
                 />
         <Button x:Name="DeleteService"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 Grid.Row="7"
                 Grid.Column="1"
                 Margin="480,20,60,20"
@@ -233,7 +233,7 @@
                 />
         <Button x:Name="Cancel"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 Grid.Row="9"
                 Grid.Column="1"
                 Margin="350,20,100,10"
@@ -293,7 +293,7 @@
                 />
         <Button x:Name="DeleteMaterial"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 Grid.Row="3"
                 Grid.Column="2"
                 Margin="60,20,480,20"
@@ -376,7 +376,7 @@
                 />
         <Button x:Name="CancelMaterial"
                 Style="{StaticResource jB}"
-                Background="Red"
+                Background="#FFC71F1F"
                 Grid.Row="5"
                 Grid.Column="2"
                 Margin="430,20,20,10"

@@ -29,8 +29,8 @@ namespace ConstructionCompany.Pages.ServicePages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Views.AddRange(Entity.AppData.context.Service.ToList());
-            View.ItemsSource = Views;
+            List<Entity.Service> Views = Entity.AppData.context.Service.ToList();
+            LoadView(Views);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -46,6 +46,28 @@ namespace ConstructionCompany.Pages.ServicePages
             }
             else
                 MessageBox.Show("Выберите услугу!");
+        }
+        private void Searchbut_Click(object sender, RoutedEventArgs e)
+        {
+
+            List<Entity.Service> view = AppData.context.Service.ToList();
+            if (SearchName.Text != "")
+                view = view.FindAll(i => i.Name == SearchName.Text);
+            LoadView(view);
+
+        }
+        public void LoadView(List<Entity.Service> views)
+        {
+            View.Items.Clear();
+            foreach (var item in views)
+                View.Items.Add(item);
+        }
+
+        private void SearchClear_Click(object sender, RoutedEventArgs e)
+        {
+            SearchName.Text = "";
+            List<Entity.Service> Views = Entity.AppData.context.Service.ToList();
+            LoadView(Views);
         }
     }
 }

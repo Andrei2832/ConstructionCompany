@@ -21,7 +21,7 @@ namespace ConstructionCompany.Pages.OrderPages
     /// </summary>
     public partial class OrderPage : Page
     {
-        List<Entity.OrderView> Views = new List<Entity.OrderView>();
+        
         public OrderPage()
         {
             InitializeComponent();
@@ -29,8 +29,8 @@ namespace ConstructionCompany.Pages.OrderPages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Views.AddRange(Entity.AppData.context.OrderView.ToList());
-            View.ItemsSource = Views;
+            List<Entity.OrderView> Views =  Entity.AppData.context.OrderView.ToList();
+            LoadView(Views);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -44,12 +44,37 @@ namespace ConstructionCompany.Pages.OrderPages
                 AppData.context.ServiceOrder.RemoveRange(AppData.context.ServiceOrder.Where(i => i.idOrder == orderView.idOrder).ToList());
                 AppData.context.SaveChanges();
                 MessageBox.Show("Заказ удалён!");
-                Views.Remove(orderView);
-                View.Items.Refresh();
+                View.Items.Remove(orderView);
             }
             else
                 MessageBox.Show("Выберите заказ!");
             
+        }
+
+        private void Searchbut_Click(object sender, RoutedEventArgs e)
+        {
+            
+                List<Entity.OrderView> view = AppData.context.OrderView.ToList();
+                if (SearchNumber.Text != "")
+                    view = view.FindAll(i => i.idOrder == Int32.Parse(SearchNumber.Text));
+                if (SearchObject.Text != "")
+                    view = view.FindAll(i => i.Name == SearchObject.Text);
+                LoadView(view);
+            
+        }
+        public void LoadView(List<Entity.OrderView> views)
+        {
+            View.Items.Clear();
+            foreach (var item in views)
+                View.Items.Add(item);
+        }
+
+        private void SearchClear_Click(object sender, RoutedEventArgs e)
+        {
+            SearchNumber.Text = "";
+            SearchObject.Text = "";
+            List<Entity.OrderView> Views = Entity.AppData.context.OrderView.ToList();
+            LoadView(Views);
         }
     }
 }

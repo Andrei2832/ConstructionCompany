@@ -21,7 +21,7 @@ namespace ConstructionCompany.Pages.WorkerPages
     /// </summary>
     public partial class WorkerPage : Page
     {
-        List<Entity.WorkerView> Views = new List<Entity.WorkerView>();
+        
         public WorkerPage()
         {
             InitializeComponent();
@@ -29,8 +29,8 @@ namespace ConstructionCompany.Pages.WorkerPages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Views = Entity.AppData.context.WorkerView.ToList();
-            View.ItemsSource = Views;
+            List<Entity.WorkerView> Views = Entity.AppData.context.WorkerView.ToList();
+            LoadView(Views);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -42,12 +42,33 @@ namespace ConstructionCompany.Pages.WorkerPages
                 AppData.context.specialtiesWorkers.RemoveRange(AppData.context.specialtiesWorkers.Where(i => i.idWorker == workerView.idWorker).ToList());
                 AppData.context.SaveChanges();
                 MessageBox.Show("Рабочий удалён!");
-                Views.Remove(workerView);
-                View.Items.Refresh();
+                View.Items.Remove(workerView);
             }
             else
                 MessageBox.Show("Выберите рабочего!");
             
+        }
+        private void Searchbut_Click(object sender, RoutedEventArgs e)
+        {
+
+            List<Entity.WorkerView> view = AppData.context.WorkerView.ToList();
+            if (SearchSurName.Text != "")
+                view = view.FindAll(i => i.Surname == SearchSurName.Text);
+            LoadView(view);
+
+        }
+        public void LoadView(List<Entity.WorkerView> views)
+        {
+            View.Items.Clear();
+            foreach (var item in views)
+                View.Items.Add(item);
+        }
+
+        private void SearchClear_Click(object sender, RoutedEventArgs e)
+        {
+            SearchSurName.Text = "";
+            List<Entity.WorkerView> Views = Entity.AppData.context.WorkerView.ToList();
+            LoadView(Views);
         }
     }
 }
